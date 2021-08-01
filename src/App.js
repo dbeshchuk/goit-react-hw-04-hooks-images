@@ -28,6 +28,13 @@ const App = () => {
     }
   }, [images]);
 
+  useEffect(() => {
+    if (searchPage > 1) {
+      loadMore();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchPage]);
+
   const searchSubmit = async (e) => {
     e.preventDefault();
 
@@ -66,13 +73,6 @@ const App = () => {
 
     setIsLoaderOn(false);
   };
-
-  useEffect(() => {
-    if (searchPage > 1) {
-      loadMore();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchPage]);
 
   const inputChange = ({ target }) => {
     const { value } = target;
